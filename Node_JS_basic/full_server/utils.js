@@ -3,7 +3,7 @@ const fs = require('fs');
 function readDatabase(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) return reject(new Error('Cannot load the database'));
+      if (err) { reject(new Error('Cannot load the database')); return; }
 
       const lines = data.split('\n').filter((l) => l.trim() !== '').slice(1);
       const fields = {};
